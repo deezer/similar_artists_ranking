@@ -10,6 +10,13 @@ On an artist’s profile page, music streaming services such as [Deezer](https:/
 yet available. In Section 3 of our paper, we model this cold start similar artists ranking problem as a _directed link prediction task_ in a directed and attributed graph, connecting artists to their top-_k_ most similar neighbors and incorporating side musical information.
 Then, we address this task by learning node embedding representations from this graph, notably by leveraging [gravity-inspired graph (variational) autoencoders](https://github.com/deezer/gravity_graph_autoencoders/) models.
 
+<div align="center">
+    <img
+        src="images/image.png"
+        width="65%">
+</div>
+
+
 ## Datasets
 
 In the `data` repository, we release two datasets associated to this work, and detailed in Section 4.1.1 of the paper.
@@ -43,12 +50,12 @@ python setup.py install
 cd src
 ```
 
-Requirements: python 3, numpy, networkx, scipy, scikit-learn
+Requirements: python 3, networkx, numpy, scikit-learn, scipy.
 
 
 #### Run experiments
 
-The following command will execute experiments corresponding to **Table 1** from the paper and report Recall@K, MAP@K and NDCG@K scores:
+The following command will execute experiments corresponding to Table 1 from the paper and report all Recall@K, MAP@K and NDCG@K scores:
 
 ```Bash
 python main.py
