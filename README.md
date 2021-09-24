@@ -50,7 +50,7 @@ python setup.py install
 cd src
 ```
 
-Requirements: python 3, networkx, numpy, scikit-learn, scipy.
+Requirements: python **3.8**, networkx, numpy, scikit-learn, scipy.
 
 
 #### Run experiments
