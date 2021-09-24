@@ -19,7 +19,7 @@ Then, we address this task by learning node embedding representations from this 
 
 ## Datasets
 
-In the `data` repository, we release two datasets associated to this work, and detailed in Section 4.1.1 of the paper.
+In the `data` repository, we release two datasets associated with this work, and detailed in Section 4.1.1 of the paper.
 
 #### Directed graph `deezer_graph.csv`
 
