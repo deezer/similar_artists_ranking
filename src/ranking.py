@@ -140,9 +140,9 @@ def emb_to_predictions(cold_ids, emb, method = 'inner-product', d = config['dime
     elif method == 'gravity':
 
         # Masses = last column of embedding matrix
-        mass = emb[:,(d-1)]*np.ones((len(cold_ids),emb.shape[0]))
+        mass = emb[:,d]*np.ones((len(cold_ids),emb.shape[0]))
         # z_i vectors: first (d-1) columns
-        emb_only = emb[:,:(d-1)]
+        emb_only = emb[:,:d]
 
         dist = np.square(epsilon + distance_matrix(emb_only, emb_only))[cold_ids,:]
         preds = sigmoid(mass - lamb*np.log(dist))
