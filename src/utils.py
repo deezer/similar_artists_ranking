@@ -34,20 +34,7 @@ def load_embedding(model):
     :return: num_nodes*dimension embedding matrix
     """
 
-    if model == "deal":
-        emb = np.genfromtxt("../embeddings/deal.csv", delimiter=",")
-
-    elif model == "dropoutnet":
-        emb = np.genfromtxt("../embeddings/dropoutnet.csv", delimiter=",")
-
-    elif model == "stargcn":
-        emb = np.genfromtxt("../embeddings/stargcn.csv", delimiter=",")
-
-    elif model == "svd":
-        emb = np.genfromtxt("../embeddings/svd.csv", delimiter=",")
-
-    else:
-        raise ValueError('Undefined model!')
+    emb = np.genfromtxt("../embeddings/{}.csv".format(model), delimiter=",")
 
     return emb
 

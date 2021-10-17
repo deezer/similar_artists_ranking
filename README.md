@@ -24,9 +24,13 @@ In the `data` repository, we release two datasets associated with this work, and
 #### Directed graph `deezer_graph.csv`
 
 This file provides a directed graph dataset of 24 270 artists from the Deezer catalog. Each artist points towards 20 other artists. They correspond, up to
-internal business rules, to the top-20 artists from the same graph that would be recommended in production in our  _"Similar Artists"_ feature. Due to confidentiality constraints, artists are unfortunately anonymized. 
+internal business rules, to the top-20 artists<sup>[1](#myfootnote1)</sup> from the same graph that would be recommended in production in our  _"Similar Artists"_ feature. Due to confidentiality constraints, artists are unfortunately anonymized. 
 
-Each row  corresponds to a directed edge from an artist `i` to an artist `j` in the format `(id_i, id_j, S_ij)`. The edge weight `S_ij` denotes the similarity score of `j` with respect to `i`, as described in the paper.
+Each row corresponds to a directed edge from an artist `i` to an artist `j` in the format `(id_i, id_j, S_ij)`. The edge weight `S_ij` denotes the similarity score<sup>[2](#myfootnote2)</sup> of `j` with respect to `i`, as described in the paper.
+
+<sub><sup><a name="footnote1">1</a>: A minority of artists actually have fewer than 20 neighbors in this graph. This corresponds to special case where similarity scores associated the removed connections were lower than 0.</sup></sub>
+
+<sub><sup><a name="footnote2">2</a>: For graph construction purposes, `deezer_graph.csv` includes self-loops. They are removed when loading the graph for experiments. Also, while similarity scores might be > 1, they were normalized in the [0,1] set for AE/VAE-related model trainings. </sup></sub>
 
 #### Descriptive features `deezer_features.csv`
 
@@ -65,13 +69,17 @@ Various options can be changed in the `option.py` file.
 
 We re-compute the following methods from scratch: Popularity, Popularity-Country, In-Degree, In-Degree by Country, K-NN, K-NN+Popularity, K-NN+In-degree.
 
-Regarding the DEAL, DropoutNet, STAR-GCN and SVD-DNN methods, we provide representative pre-computed node embedding vectors (that we obtained from models trained on Deezer internal usage data on train artists) in the `embeddings` folder. Then, we re-compute scores<sup>[1](#myfootnote1)</sup> obtained from these embedding vectors.
+Regarding the DEAL, DropoutNet, STAR-GCN and SVD-DNN methods, we provide representative pre-computed node embedding vectors (that we obtained from models trained on Deezer internal usage data on train artists) in the `embeddings` folder. Then, we re-compute scores<sup>[3](#myfootnote3)</sup> obtained from these embedding vectors.
 
-<sub><sup><a name="footnote1">1</a>: Note: as these methods include _random_ components during training, scores from Table 1 are actually averaged over 20 model trainings with different neural initializations. Scores obtained from the specific embeddings provided in `embeddings` will therefore slighly deviate from these averages.</sup></sub>
+Regarding the Standard, Source-Target, and Gravity GAE/VGAE models, we also provide representative pre-computed node embedding vectors in this repository.
+For model training, we used our Tensorflow implementation of these models available [here](https://github.com/deezer/gravity_graph_autoencoders/).
+This implementation builds upon T. Kipf's original [gae](https://github.com/tkipf/gae) repository.
 
-#### To do list
+<sub><sup><a name="footnote3">3</a>: Note: as these methods include _random_ components during training, scores from Table 1 are actually averaged over 20 model trainings with different neural initializations. Scores obtained from the specific embeddings provided in `embeddings` will therefore slighly deviate from these averages.</sup></sub>
 
-Standard, Source-Target, and Gravity GAE/VGAE will be added in the repository in the upcoming days.
+#### To do list:
+
+- incorporate FastGAE in TF code for faster training
 
 
 ## Cite

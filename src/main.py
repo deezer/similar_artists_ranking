@@ -103,5 +103,34 @@ preds = emb_to_predictions(cold_ids, emb, method = 'inner-product')
 all_evaluations(ground_truth, preds, config['K'])
 
 
-# Graph Autoencoders (To do)
-print("\nGraph AE/VAE:\nto be added.")
+# Graph Autoencoders
+
+print("\nGAE:")
+emb = load_embedding(model = "gae")
+preds = emb_to_predictions(cold_ids, emb, method = 'inner-product')
+all_evaluations(ground_truth, preds, config['K'])
+
+print("\nVGAE:")
+emb = load_embedding(model = "vgae")
+preds = emb_to_predictions(cold_ids, emb, method = 'inner-product')
+all_evaluations(ground_truth, preds, config['K'])
+
+print("\nSource-Target GAE:")
+emb = load_embedding(model = "stgae")
+preds = emb_to_predictions(cold_ids, emb, method = 'source-target')
+all_evaluations(ground_truth, preds, config['K'])
+
+print("\nSource-Target GAE:")
+emb = load_embedding(model = "stvgae")
+preds = emb_to_predictions(cold_ids, emb, method = 'source-target')
+all_evaluations(ground_truth, preds, config['K'])
+
+print("\nGravity-Inspired GAE:")
+emb = load_embedding(model = "gravitygae")
+preds = emb_to_predictions(cold_ids, emb, method = 'gravity')
+all_evaluations(ground_truth, preds, config['K'])
+
+print("\nGravity-Inspired VGAE:")
+emb = load_embedding(model = "gravityvgae")
+preds = emb_to_predictions(cold_ids, emb, method = 'gravity')
+all_evaluations(ground_truth, preds, config['K'])

@@ -13,9 +13,9 @@ def all_evaluations(y_true, y_score, k_list = [20,100,200]):
     for k in k_list:
 
         # Compute scores @k
-        recallk = recall_k(y_true, y_score, k)
-        mapk = map_k(y_true, y_score, k)
-        ndcgk = ndcg_score(y_true, y_score, k)
+        recallk = recall_k(y_true = y_true, y_score = y_score, k = k)
+        mapk = map_k(y_true = y_true, y_score = y_score, k = k)
+        ndcgk = ndcg_score(y_true = y_true, y_score  = y_score, k = k)
 
         # Print scores (rounded, and in percentage)
         print("Recall@{}: {}%".format(k, np.round(100*recallk, 3)), \
