@@ -23,8 +23,7 @@ In the `data` repository, we release two datasets associated with this work, and
 
 #### Directed graph `deezer_graph.csv`
 
-This file provides a directed graph dataset of 24 270 artists from the Deezer catalog. Each artist points towards 20 other artists. They correspond, up to
-internal business rules, to the top-20 artists<sup>[1](#myfootnote1)</sup> from the same graph that would be recommended in production in our  _"Similar Artists"_ feature. Due to confidentiality constraints, artists are unfortunately anonymized. 
+This file provides a directed graph dataset of 24 270 artists from the Deezer catalog. Artist point towards 20 other artists<sup>[1](#myfootnote1)</sup>. They correspond, up to internal business rules, to the top-20 artists from the same graph that would be recommended in production in our  _"Similar Artists"_ feature. Due to confidentiality constraints, artists are unfortunately anonymized. 
 
 Each row corresponds to a directed edge from an artist `i` to an artist `j` in the format `(id_i, id_j, S_ij)`. The edge weight `S_ij` denotes the similarity score<sup>[2](#myfootnote2)</sup> of `j` with respect to `i`, as described in the paper.
 
